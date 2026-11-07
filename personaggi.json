@@ -1,0 +1,105 @@
+{
+ "intro": {
+  "calendario": "Benvenuti nel calendario di famiglia! Qui segno tutte le fiere di anime, manga e cosplay delle Marche, e gli appuntamenti del nostro server. Toccate un evento: ve lo presenta il fratello della sua provincia. Ne conoscete uno che manca? Proponetelo nel Discord con /proponi-evento.",
+  "mappa": "Questa è la mappa dei posti che contano: fumetterie, sedi delle fiere e i nostri punti di ritrovo, tutti controllati dallo staff. Toccate un punto e vi risponde chi abita lì. Un posto da aggiungere? Usate /proponi-luogo nel Discord.",
+  "attesa_evento": "Tocca un evento: te lo presenta il personaggio della sua provincia.",
+  "attesa_luogo": "Tocca un punto sulla mappa: te lo presenta il personaggio della sua provincia."
+ },
+ "personaggi": {
+  "marche": {
+   "nome": "Marche",
+   "titolo": "la Custode",
+   "colore": "#3BA55C",
+   "img": "img/marche.webp",
+   "evento": [
+    "Segnatevi la data: {fiera} è {quando}, a {comune}. L'ho già scritta in rosso sul calendario, e il picchio ha bussato tre volte per approvare."
+   ],
+   "evento_passato": [
+    "{fiera}, a {comune}, è già passato. L'ho lasciato in calendario per ricordo: al prossimo anno!"
+   ],
+   "luogo": [
+    "{luogo}: {categoria}, in {indirizzo}. Ve lo segnalo io, e il picchio approva."
+   ]
+  },
+  "pesaro_urbino": {
+   "nome": "Pesaro e Urbino",
+   "titolo": "il Duca",
+   "colore": "#E3B23C",
+   "img": "img/pesaro_urbino.webp",
+   "evento": [
+    "Burdèll, segnatevi la data: {fiera} è {quando}, a {comune}! Arte, fumetto e cosplay: finalmente un evento all'altezza del Duca.",
+    "Gim! {fiera} a {comune} è {quando}. Venite a farmi da pubblico: io porto la bacchetta, voi gli applausi."
+   ],
+   "evento_passato": [
+    "{fiera} a {comune} è già andato in scena. Chi c'era, sa. Chi non c'era... al prossimo concerto!"
+   ],
+   "luogo": [
+    "Vén otra! {luogo} è una tappa per chi ha gusto: {categoria}, in {indirizzo}. Il Duca approva."
+   ]
+  },
+  "ancona": {
+   "nome": "Ancona",
+   "titolo": "il Capitano",
+   "colore": "#1F5FAD",
+   "img": "img/ancona.webp",
+   "evento": [
+    "Toh và, {fiera} è {quando}, a {comune}. Bè, venite, ma 'n fate casino al porto. Io ce sarò. Forse.",
+    "Oh, ascoltate: {fiera}, {quando}, a {comune}. Famo cuscì: ci si vede lì e nessuno si perde, và."
+   ],
+   "evento_passato": [
+    "{fiera} a {comune}? Già fatto, và. Bè, ve lo siete perso? Al prossimo giro."
+   ],
+   "luogo": [
+    "Toh và, {luogo}. {categoria}, in {indirizzo}. Bè, ce se trova roba bona: andatece, ma 'n fate casino."
+   ]
+  },
+  "macerata": {
+   "nome": "Macerata",
+   "titolo": "la Diva",
+   "colore": "#C0392B",
+   "img": "img/macerata.webp",
+   "evento": [
+    "Silenzio in sala! {fiera} è {quando}, a {comune}! Me sa mi janne: preparate i cosplay, che il palcoscenico ci aspetta!",
+    "Arza 'sse chjappe, che {fiera} è {quando}! A {comune} si va in scena, e voglio vedervi tutti in prima fila."
+   ],
+   "evento_passato": [
+    "Il sipario su {fiera} è già calato! Ma niente lacrime: il prossimo anno si replica, a {comune}."
+   ],
+   "luogo": [
+    "Applausi per {luogo}! {categoria} in {indirizzo}: un palcoscenico per veri appassionati."
+   ]
+  },
+  "fermo": {
+   "nome": "Fermo",
+   "titolo": "l'Alfiera",
+   "colore": "#7FB7E8",
+   "img": "img/fermo.webp",
+   "evento": [
+    "Ammàzza, {fiera} è {quando}, a {comune}! Corro a prendere la lanterna: venite tutti, a la lèsta!",
+    "{fiera}, {quando}, a {comune}! Ascoli dice che sono troppo piccola per andarci da sola. Quindi venite con me, così non rompe!"
+   ],
+   "evento_passato": [
+    "Uffa, {fiera} a {comune} è già finito! Il prossimo anno ci andiamo tutti insieme, promesso?"
+   ],
+   "luogo": [
+    "Ammàzza, {luogo}! {categoria} in {indirizzo}. Ce vado sempre... quando Ascoli me lo lascia fà!"
+   ]
+  },
+  "ascoli": {
+   "nome": "Ascoli Piceno",
+   "titolo": "il Cavaliere",
+   "colore": "#9B1B30",
+   "img": "img/ascoli.webp",
+   "evento": [
+    "Jame! {fiera} è {quando}, a {comune}! Lucidate le lance e preparate i cosplay: il Cavaliere vi aspetta. Pozz i bbe!",
+    "Ué, quatrà! {fiera}, {quando}, a {comune}. Ci si vede lì, e chi arriva in ritardo paga le olive fritte."
+   ],
+   "evento_passato": [
+    "{fiera} a {comune} è già passato. Ma il Cavaliere non dimentica: al prossimo torneo!"
+   ],
+   "luogo": [
+    "Jame! {luogo}, {categoria} in {indirizzo}. Il Cavaliere lo raccomanda. Pozz i bbe!"
+   ]
+  }
+ }
+}

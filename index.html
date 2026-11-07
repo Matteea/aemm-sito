@@ -4,92 +4,162 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Anime & Manga Marche · Calendario e mappa</title>
-<meta name="description" content="Fiere, eventi e luoghi di anime, manga e cosplay nelle Marche, dalla community Anime & Manga Marche.">
+<meta name="description" content="Fiere, eventi e luoghi di anime, manga e cosplay nelle Marche, presentati dai personaggi della community Anime & Manga Marche.">
 <link rel="icon" href="icona.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
-  :root { --verde:#5DA94A; --blu:#2F7FB8; --giallo:#F2C14E; --rosso:#D63B3B; --scuro:#17211C; --crema:#F5F1E6;
-          --carta:#FFFFFF; --testo:#17211C; --tenue:#5b6660; --bordo:#e3ddcc; }
+  :root { --verde:#5DA94A; --blu:#2F7FB8; --giallo:#F2C14E; --scuro:#17211C; --crema:#F5F1E6;
+          --carta:#FFFFFF; --testo:#17211C; --tenue:#5b6660; --bordo:#e3ddcc; --fumetto:#FFFFFF; }
   @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-          --crema:#141a17; --carta:#1e2622; --testo:#F5F1E6; --tenue:#b9c2bb; --bordo:#2f3a34; } }
-  :root[data-theme="dark"] { --crema:#141a17; --carta:#1e2622; --testo:#F5F1E6; --tenue:#b9c2bb; --bordo:#2f3a34; }
+          --crema:#141a17; --carta:#1e2622; --testo:#F5F1E6; --tenue:#b9c2bb; --bordo:#2f3a34; --fumetto:#26302b; } }
+  :root[data-theme="dark"] { --crema:#141a17; --carta:#1e2622; --testo:#F5F1E6; --tenue:#b9c2bb; --bordo:#2f3a34; --fumetto:#26302b; }
   * { box-sizing:border-box; }
   html, body { overflow-x:hidden; }
-  header div, main, .pannello { min-width:0; }
   body { margin:0; font-family:Poppins, system-ui, sans-serif; background:var(--crema); color:var(--testo); }
-  header { padding:20px 16px 8px; max-width:1100px; margin:0 auto; display:flex; align-items:center; gap:14px; }
-  header img { width:64px; height:64px; border-radius:50%; border:3px solid var(--scuro); }
-  h1 { margin:0; font-size:clamp(20px,4vw,30px); }
-  header p { margin:2px 0 0; color:var(--tenue); font-size:14px; }
-  nav { max-width:1100px; margin:8px auto 0; padding:0 16px; display:flex; gap:8px; flex-wrap:wrap; }
+  .alto { max-width:1400px; margin:0 auto; padding:18px 16px 6px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+  .alto img { width:60px; height:60px; border-radius:50%; border:3px solid var(--scuro); }
+  .alto div { min-width:0; flex:1; }
+  h1 { margin:0; font-size:clamp(20px,3.4vw,30px); }
+  .alto p { margin:2px 0 0; color:var(--tenue); font-size:14px; }
+  nav { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
   nav button { font:600 15px Poppins, sans-serif; padding:10px 18px; border-radius:999px; border:2px solid var(--scuro);
                background:var(--carta); color:var(--testo); cursor:pointer; }
   nav button[aria-selected="true"] { background:var(--verde); color:#fff; }
-  nav a { margin-left:auto; align-self:center; font-weight:600; color:var(--blu); }
-  main { max-width:1100px; margin:12px auto 32px; padding:0 16px; }
-  .pannello { background:var(--carta); border:1px solid var(--bordo); border-radius:16px; padding:12px; }
-  #mappa { height:min(70vh,620px); border-radius:12px; }
+  nav a { font-weight:600; color:var(--blu); margin-left:6px; }
+
+  /* tre colonne: personaggio · contenuto · personaggio */
+  main { max-width:1400px; margin:10px auto 28px; padding:0 16px; }
+  .scena { display:grid; grid-template-columns:250px minmax(0,1fr) 250px; gap:16px; align-items:start; }
+  .pannello { background:var(--carta); border:1px solid var(--bordo); border-radius:16px; padding:12px; min-width:0; }
+  #mappa { height:min(72vh,640px); border-radius:12px; }
   .legenda { display:flex; flex-wrap:wrap; gap:6px 14px; margin:10px 2px 0; font-size:13px; color:var(--tenue); }
   .legenda span::before { content:""; display:inline-block; width:11px; height:11px; border-radius:50%;
                           margin-right:6px; background:var(--c); vertical-align:-1px; }
-  .vuoto { color:var(--tenue); padding:12px 4px; }
+
+  /* il personaggio con il fumetto */
+  .guida { position:sticky; top:12px; display:flex; flex-direction:column; align-items:center; text-align:left; }
+  .guida .testo { width:100%; display:flex; flex-direction:column; align-items:center; }
+  .guida .figura { width:100%; display:flex; justify-content:center; height:300px; }
+  .guida .figura img { height:100%; width:auto; max-width:100%; object-fit:contain;
+                       filter:drop-shadow(0 6px 8px rgba(0,0,0,.18)); }
+  .guida .nome { font-weight:700; font-size:15px; margin-top:6px; padding:4px 14px; border-radius:999px;
+                 color:#fff; background:var(--c, var(--verde)); border:2px solid var(--scuro); }
+  .fumetto { position:relative; margin-top:14px; background:var(--fumetto); border:3px solid var(--scuro);
+             border-radius:18px; padding:12px 14px; font-size:14.5px; line-height:1.45; width:100%; }
+  .fumetto::before { content:""; position:absolute; top:-13px; left:50%; transform:translateX(-50%);
+                     border:11px solid transparent; border-bottom-color:var(--scuro); border-top:0; }
+  .fumetto::after { content:""; position:absolute; top:-8px; left:50%; transform:translateX(-50%);
+                    border:8px solid transparent; border-bottom-color:var(--fumetto); border-top:0; }
+  .fumetto code { white-space:nowrap; font:600 13.5px Poppins, sans-serif; background:var(--crema);
+                  padding:1px 6px; border-radius:6px; }
+  .fumetto .info { margin-top:8px; padding-top:8px; border-top:1px dashed var(--bordo); font-size:13px; color:var(--tenue); }
+  .fumetto .info a { color:var(--blu); font-weight:600; }
+  .vuota .figura { opacity:.35; filter:grayscale(1); }
+  .entra { animation:entra .45s cubic-bezier(.2,1.4,.4,1); }
+  @keyframes entra { from { opacity:0; transform:translateY(14px) scale(.96); } to { opacity:1; transform:none; } }
+
   .fc { --fc-border-color:var(--bordo); --fc-page-bg-color:var(--carta); --fc-neutral-bg-color:var(--crema);
         --fc-today-bg-color:rgba(242,193,78,.18); --fc-button-bg-color:var(--scuro); --fc-button-border-color:var(--scuro);
         --fc-button-active-bg-color:var(--verde); --fc-button-active-border-color:var(--verde); }
-  .fc .fc-toolbar-title { font-size:clamp(16px,3vw,22px); text-transform:capitalize; }
-  .fc a { color:inherit; }
-  #dettaglio { margin-top:10px; font-size:14px; }
+  .fc .fc-toolbar-title { font-size:clamp(16px,2.4vw,22px); text-transform:capitalize; }
+  .fc a { color:inherit; } .fc-event { cursor:pointer; }
   footer { text-align:center; color:var(--tenue); font-size:12px; padding:0 16px 24px; }
   [hidden] { display:none !important; }
-  @media (max-width: 640px) {
-    header { padding-top:14px; } header img { width:52px; height:52px; }
-    nav a { margin-left:0; width:100%; padding:4px 2px; }
+
+  /* schermi stretti: una colonna; Marche in alto, il presentatore sotto il contenuto */
+  @media (max-width: 1000px) {
+    .scena { grid-template-columns:minmax(0,1fr); }
+    .scena .marche { order:1; } .scena .pannello { order:2; } .scena .presenta { order:3; }
+    .guida { position:static; flex-direction:row; align-items:flex-start; gap:12px; }
+    .guida .figura { width:96px; height:150px; flex:none; }
+    .guida .testo { flex:1; min-width:0; align-items:flex-start; }
+    .fumetto { margin-top:8px; }
+    .fumetto::before { top:14px; left:-13px; transform:none; border:10px solid transparent;
+                       border-right-color:var(--scuro); border-left:0; }
+    .fumetto::after { top:16px; left:-8px; transform:none; border:8px solid transparent;
+                      border-right-color:var(--fumetto); border-left:0; }
     .fc .fc-header-toolbar { flex-wrap:wrap; justify-content:center; gap:8px; }
-    .fc .fc-toolbar-chunk { display:flex; justify-content:center; }
     .pannello { padding:8px; }
   }
 </style>
 </head>
 <body>
-<header>
+<div class="alto">
   <img src="icona.png" alt="">
   <div>
     <h1>Anime &amp; Manga Marche</h1>
     <p>Fiere, eventi e luoghi di anime, manga e cosplay nelle cinque province</p>
   </div>
-</header>
-<nav role="tablist">
-  <button role="tab" id="tab-cal" aria-selected="true" aria-controls="pan-cal">📅 Calendario</button>
-  <button role="tab" id="tab-map" aria-selected="false" aria-controls="pan-map">📍 Mappa</button>
-  <a href="https://discord.gg/guhw2RgzDu">Entra nel Discord →</a>
-</nav>
+  <nav role="tablist">
+    <button role="tab" id="tab-cal" aria-selected="true" aria-controls="pan-cal">📅 Calendario</button>
+    <button role="tab" id="tab-map" aria-selected="false" aria-controls="pan-map">📍 Mappa</button>
+    <a href="https://discord.gg/guhw2RgzDu">Entra nel Discord →</a>
+  </nav>
+</div>
+
 <main>
-  <section id="pan-cal" class="pannello" role="tabpanel">
-    <div id="calendario"></div>
-    <div id="dettaglio" class="vuoto">Tocca un evento per i dettagli.</div>
+  <section id="pan-cal" class="scena" role="tabpanel">
+    <aside class="guida marche" id="cal-marche"></aside>
+    <div class="pannello"><div id="calendario"></div></div>
+    <aside class="guida presenta vuota" id="cal-pres" aria-live="polite"></aside>
   </section>
-  <section id="pan-map" class="pannello" role="tabpanel" hidden>
-    <div id="mappa"></div>
-    <div class="legenda" id="legenda"></div>
-    <div id="mappa-vuota" class="vuoto" hidden>Ancora nessun luogo sulla mappa: proponine uno nel Discord con /proponi-luogo.</div>
+  <section id="pan-map" class="scena" role="tabpanel" hidden>
+    <aside class="guida presenta vuota" id="map-pres" aria-live="polite"></aside>
+    <div class="pannello"><div id="mappa"></div><div class="legenda" id="legenda"></div></div>
+    <aside class="guida marche" id="map-marche"></aside>
   </section>
 </main>
-<footer>Dati aggiornati in automatico dai bot del server. Mappa © OpenStreetMap contributors.</footer>
+<footer>Dati aggiornati in automatico dai bot del server · personaggi originali della community · mappa © OpenStreetMap contributors</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.15/locales/it.global.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const PROVINCE = { pesaro_urbino:["Pesaro e Urbino","#E3B23C"], ancona:["Ancona","#1F5FAD"], macerata:["Macerata","#C0392B"],
-                   fermo:["Fermo","#7FB7E8"], ascoli:["Ascoli Piceno","#9B1B30"], marche:["Tutta la regione","#3BA55C"] };
-const CATEGORIE = { fumetteria:"Fumetteria", fiera:"Sede di fiere", ritrovo:"Punto di ritrovo", altro:"Altro" };
-const nocache = () => "?v=" + Math.floor(Date.now() / 300000);          // si aggiorna ogni 5 minuti
-const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const CATEGORIE = { fumetteria:"Fumetteria", fiera:"Sede di fiere", ritrovo:"Punto di ritrovo", altro:"Luogo di interesse" };
+const nocache = () => "?v=" + Math.floor(Date.now() / 300000);          // dati freschi ogni 5 minuti
+const caso = a => a[Math.floor(Math.random() * a.length)];
+const riempi = (t, v) => t.replace(/\{(\w+)\}/g, (m, k) => v[k] ?? "");
+let P = null;                                                             // personaggi.json
+
+// ---------------- la scheda di un personaggio (figura, nome, fumetto)
+function scheda(el, pid, testo, info, vuota) {
+  const p = P.personaggi[pid] || P.personaggi.marche;
+  el.classList.toggle("vuota", !!vuota);
+  el.classList.remove("entra"); void el.offsetWidth; el.classList.add("entra");
+  el.innerHTML = "";
+  const fig = document.createElement("div"); fig.className = "figura";
+  const img = document.createElement("img"); img.src = p.img; img.alt = p.nome; fig.append(img);
+  const box = document.createElement("div"); box.className = "testo";
+  const nome = document.createElement("div"); nome.className = "nome";
+  nome.textContent = `${p.nome} · ${p.titolo}`; nome.style.setProperty("--c", p.colore);
+  const fum = document.createElement("div"); fum.className = "fumetto";
+  for (const pezzo of testo.split(/(\/[a-z][a-z-]*)/)) {          // i comandi (/proponi-evento) restano interi
+    if (/^\/[a-z]/.test(pezzo)) { const c = document.createElement("code"); c.textContent = pezzo; fum.append(c); }
+    else fum.append(pezzo);
+  }
+  if (info) { const i = document.createElement("div"); i.className = "info"; i.append(...info); fum.append(i); }
+  box.append(nome, fum); el.append(fig, box);
+}
+const riga = t => { const s = document.createElement("div"); s.textContent = t; return s; };
+const link = (href, t) => { const d = document.createElement("div"), a = document.createElement("a");
+  a.href = href; a.target = "_blank"; a.rel = "noopener"; a.textContent = t; d.append(a); return d; };
+
+// ---------------- "quando": oggi, domani, tra 5 giorni, il 15 maggio...
+function quando(inizio, fine) {
+  const oggi = new Date(); oggi.setHours(0, 0, 0, 0);
+  const g = d => { const x = new Date(d); x.setHours(0, 0, 0, 0); return Math.round((x - oggi) / 864e5); };
+  const a = g(inizio), b = fine ? g(new Date(fine - 1)) : a;
+  if (b < 0) return { passato: true };
+  if (a < 0) return { testo: "in corso proprio adesso" };
+  if (a <= 2) return { testo: ["oggi", "domani", "dopodomani"][a] };
+  if (a <= 30) return { testo: `tra ${a} giorni` };
+  return { testo: "il " + inizio.toLocaleDateString("it-IT", { day: "numeric", month: "long" }) };
+}
 
 // ---------------- calendario
-const dettaglio = document.getElementById("dettaglio");
+const presCal = document.getElementById("cal-pres");
 const cal = new FullCalendar.Calendar(document.getElementById("calendario"), {
   locale: "it", firstDay: 1, height: "auto",
   initialView: window.innerWidth < 640 ? "prossimi" : "dayGridMonth",
@@ -100,19 +170,22 @@ const cal = new FullCalendar.Calendar(document.getElementById("calendario"), {
   events: (info, ok, ko) => fetch("data/eventi.json" + nocache()).then(r => r.json()).then(ok).catch(ko),
   eventClick: ({ event, jsEvent }) => {
     jsEvent.preventDefault();
-    const p = event.extendedProps, prov = PROVINCE[p.provincia]?.[0] ?? "";
-    const quando = event.allDay
-      ? event.start.toLocaleDateString("it-IT", { day:"numeric", month:"long", year:"numeric" })
-      : event.start.toLocaleString("it-IT", { dateStyle:"long", timeStyle:"short" });
-    dettaglio.className = "";
-    dettaglio.innerHTML = `<strong>${esc(event.title)}</strong> · ${esc(quando)}<br>${esc(p.comune)}${p.luogo ? " · " + esc(p.luogo) : ""}`
-      + (prov ? ` · ${esc(prov)}` : "") + (p.link ? `<br><a href="${esc(p.link)}" target="_blank" rel="noopener">Più informazioni</a>` : "");
+    const x = event.extendedProps, pid = P.personaggi[x.provincia] ? x.provincia : "marche";
+    const q = quando(event.start, event.end), v = { fiera: event.title, comune: x.comune, quando: q.testo };
+    const testo = riempi(caso(q.passato ? P.personaggi[pid].evento_passato : P.personaggi[pid].evento), v);
+    const data = event.allDay
+      ? event.start.toLocaleDateString("it-IT", { day: "numeric", month: "long", year: "numeric" })
+      : event.start.toLocaleString("it-IT", { dateStyle: "long", timeStyle: "short" });
+    const info = [riga(`📅 ${data}`), riga(`📍 ${x.comune}${x.luogo ? " · " + x.luogo : ""}`)];
+    if (x.link) info.push(link(x.link, "Più informazioni"));
+    scheda(presCal, pid, testo, info);
+    if (window.innerWidth <= 1000) presCal.scrollIntoView({ behavior: "smooth", block: "nearest" });
   },
 });
-cal.render();
 
-// ---------------- mappa (si crea al primo clic sulla scheda: Leaflet vuole un contenitore visibile)
+// ---------------- mappa (si crea la prima volta che si apre la scheda)
 let mappa = null;
+const presMap = document.getElementById("map-pres");
 function apriMappa() {
   if (mappa) { mappa.invalidateSize(); return; }
   mappa = L.map("mappa").setView([43.35, 13.25], 8);
@@ -120,20 +193,31 @@ function apriMappa() {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(mappa);
   fetch("data/luoghi.geojson" + nocache()).then(r => r.json()).then(dati => {
     const strato = L.geoJSON(dati, {
-      pointToLayer: (f, ll) => L.circleMarker(ll, { radius: 9, weight: 3, color: "#17211C",
+      pointToLayer: (f, ll) => L.circleMarker(ll, { radius: 10, weight: 3, color: "#17211C",
                                                    fillColor: f.properties.colore, fillOpacity: .95 }),
-      onEachFeature: (f, layer) => { const p = f.properties;
-        layer.bindPopup(`<strong>${esc(p.nome)}</strong><br>${esc(CATEGORIE[p.categoria] ?? "")}<br>${esc(p.indirizzo)}`
-          + (p.link ? `<br><a href="${esc(p.link)}" target="_blank" rel="noopener">Sito</a>` : "")); },
+      onEachFeature: (f, layer) => {
+        layer.bindTooltip(f.properties.nome);
+        layer.on("click", () => {
+          const p = f.properties, pid = P.personaggi[p.provincia] ? p.provincia : "marche";
+          const [lon, lat] = f.geometry.coordinates;
+          const testo = riempi(caso(P.personaggi[pid].luogo),
+                               { luogo: p.nome, categoria: CATEGORIE[p.categoria] || "Luogo di interesse", indirizzo: p.indirizzo });
+          const info = [riga(`📍 ${p.indirizzo}`),
+                        link(`https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=18/${lat}/${lon}`, "Apri nella mappa")];
+          if (p.link) info.push(link(p.link, "Sito o pagina social"));
+          scheda(presMap, pid, testo, info);
+          if (window.innerWidth <= 1000) presMap.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        });
+      },
     }).addTo(mappa);
     if (dati.features.length) mappa.fitBounds(strato.getBounds().pad(0.3), { maxZoom: 12 });
-    else document.getElementById("mappa-vuota").hidden = false;
+    else scheda(presMap, "marche", "Ancora nessun luogo sulla mappa: il primo proponilo tu nel Discord, con /proponi-luogo!", null, true);
   });
-  document.getElementById("legenda").innerHTML = Object.values(PROVINCE).slice(0, 5)
-    .map(([n, c]) => `<span style="--c:${c}">${n}</span>`).join("");
+  document.getElementById("legenda").innerHTML = ["pesaro_urbino", "ancona", "macerata", "fermo", "ascoli"]
+    .map(k => `<span style="--c:${P.personaggi[k].colore}">${P.personaggi[k].nome}</span>`).join("");
 }
 
-// ---------------- schede
+// ---------------- schede Calendario / Mappa
 const schede = { "tab-cal": "pan-cal", "tab-map": "pan-map" };
 function mostra(id) {
   for (const [t, p] of Object.entries(schede)) {
@@ -143,8 +227,18 @@ function mostra(id) {
   if (id === "tab-map") apriMappa(); else cal.updateSize();
   history.replaceState(null, "", id === "tab-map" ? "#mappa" : "#calendario");
 }
-for (const t of Object.keys(schede)) document.getElementById(t).addEventListener("click", () => mostra(t));
-if (location.hash === "#mappa") mostra("tab-map");
+
+// ---------------- avvio: prima i personaggi, poi il resto
+fetch("personaggi.json" + nocache()).then(r => r.json()).then(dati => {
+  P = dati;
+  scheda(document.getElementById("cal-marche"), "marche", P.intro.calendario);
+  scheda(document.getElementById("map-marche"), "marche", P.intro.mappa);
+  scheda(presCal, "marche", P.intro.attesa_evento, null, true);
+  scheda(presMap, "marche", P.intro.attesa_luogo, null, true);
+  cal.render();
+  for (const t of Object.keys(schede)) document.getElementById(t).addEventListener("click", () => mostra(t));
+  if (location.hash === "#mappa") mostra("tab-map");
+});
 </script>
 </body>
 </html>
