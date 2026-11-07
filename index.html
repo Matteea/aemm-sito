@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anime & Manga Marche · Calendario e mappa</title>
+<meta name="description" content="Fiere, eventi e luoghi di anime, manga e cosplay nelle Marche, dalla community Anime & Manga Marche.">
+<link rel="icon" href="icona.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+  :root { --verde:#5DA94A; --blu:#2F7FB8; --giallo:#F2C14E; --rosso:#D63B3B; --scuro:#17211C; --crema:#F5F1E6;
+          --carta:#FFFFFF; --testo:#17211C; --tenue:#5b6660; --bordo:#e3ddcc; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+          --crema:#141a17; --carta:#1e2622; --testo:#F5F1E6; --tenue:#b9c2bb; --bordo:#2f3a34; } }
+  :root[data-theme="dark"] { --crema:#141a17; --carta:#1e2622; --testo:#F5F1E6; --tenue:#b9c2bb; --bordo:#2f3a34; }
+  * { box-sizing:border-box; }
+  html, body { overflow-x:hidden; }
+  header div, main, .pannello { min-width:0; }
+  body { margin:0; font-family:Poppins, system-ui, sans-serif; background:var(--crema); color:var(--testo); }
+  header { padding:20px 16px 8px; max-width:1100px; margin:0 auto; display:flex; align-items:center; gap:14px; }
+  header img { width:64px; height:64px; border-radius:50%; border:3px solid var(--scuro); }
+  h1 { margin:0; font-size:clamp(20px,4vw,30px); }
+  header p { margin:2px 0 0; color:var(--tenue); font-size:14px; }
+  nav { max-width:1100px; margin:8px auto 0; padding:0 16px; display:flex; gap:8px; flex-wrap:wrap; }
+  nav button { font:600 15px Poppins, sans-serif; padding:10px 18px; border-radius:999px; border:2px solid var(--scuro);
+               background:var(--carta); color:var(--testo); cursor:pointer; }
+  nav button[aria-selected="true"] { background:var(--verde); color:#fff; }
+  nav a { margin-left:auto; align-self:center; font-weight:600; color:var(--blu); }
+  main { max-width:1100px; margin:12px auto 32px; padding:0 16px; }
+  .pannello { background:var(--carta); border:1px solid var(--bordo); border-radius:16px; padding:12px; }
+  #mappa { height:min(70vh,620px); border-radius:12px; }
+  .legenda { display:flex; flex-wrap:wrap; gap:6px 14px; margin:10px 2px 0; font-size:13px; color:var(--tenue); }
+  .legenda span::before { content:""; display:inline-block; width:11px; height:11px; border-radius:50%;
+                          margin-right:6px; background:var(--c); vertical-align:-1px; }
+  .vuoto { color:var(--tenue); padding:12px 4px; }
+  .fc { --fc-border-color:var(--bordo); --fc-page-bg-color:var(--carta); --fc-neutral-bg-color:var(--crema);
+        --fc-today-bg-color:rgba(242,193,78,.18); --fc-button-bg-color:var(--scuro); --fc-button-border-color:var(--scuro);
+        --fc-button-active-bg-color:var(--verde); --fc-button-active-border-color:var(--verde); }
+  .fc .fc-toolbar-title { font-size:clamp(16px,3vw,22px); text-transform:capitalize; }
+  .fc a { color:inherit; }
+  #dettaglio { margin-top:10px; font-size:14px; }
+  footer { text-align:center; color:var(--tenue); font-size:12px; padding:0 16px 24px; }
+  [hidden] { display:none !important; }
+  @media (max-width: 640px) {
+    header { padding-top:14px; } header img { width:52px; height:52px; }
+    nav a { margin-left:0; width:100%; padding:4px 2px; }
+    .fc .fc-header-toolbar { flex-wrap:wrap; justify-content:center; gap:8px; }
+    .fc .fc-toolbar-chunk { display:flex; justify-content:center; }
+    .pannello { padding:8px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <img src="icona.png" alt="">
+  <div>
+    <h1>Anime &amp; Manga Marche</h1>
+    <p>Fiere, eventi e luoghi di anime, manga e cosplay nelle cinque province</p>
+  </div>
+</header>
+<nav role="tablist">
+  <button role="tab" id="tab-cal" aria-selected="true" aria-controls="pan-cal">📅 Calendario</button>
+  <button role="tab" id="tab-map" aria-selected="false" aria-controls="pan-map">📍 Mappa</button>
+  <a href="https://discord.gg/guhw2RgzDu">Entra nel Discord →</a>
+</nav>
+<main>
+  <section id="pan-cal" class="pannello" role="tabpanel">
+    <div id="calendario"></div>
+    <div id="dettaglio" class="vuoto">Tocca un evento per i dettagli.</div>
+  </section>
+  <section id="pan-map" class="pannello" role="tabpanel" hidden>
+    <div id="mappa"></div>
+    <div class="legenda" id="legenda"></div>
+    <div id="mappa-vuota" class="vuoto" hidden>Ancora nessun luogo sulla mappa: proponine uno nel Discord con /proponi-luogo.</div>
+  </section>
+</main>
+<footer>Dati aggiornati in automatico dai bot del server. Mappa © OpenStreetMap contributors.</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.15/locales/it.global.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const PROVINCE = { pesaro_urbino:["Pesaro e Urbino","#E3B23C"], ancona:["Ancona","#1F5FAD"], macerata:["Macerata","#C0392B"],
+                   fermo:["Fermo","#7FB7E8"], ascoli:["Ascoli Piceno","#9B1B30"], marche:["Tutta la regione","#3BA55C"] };
+const CATEGORIE = { fumetteria:"Fumetteria", fiera:"Sede di fiere", ritrovo:"Punto di ritrovo", altro:"Altro" };
+const nocache = () => "?v=" + Math.floor(Date.now() / 300000);          // si aggiorna ogni 5 minuti
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+// ---------------- calendario
+const dettaglio = document.getElementById("dettaglio");
+const cal = new FullCalendar.Calendar(document.getElementById("calendario"), {
+  locale: "it", firstDay: 1, height: "auto",
+  initialView: window.innerWidth < 640 ? "prossimi" : "dayGridMonth",
+  headerToolbar: { left: "prev,next today", center: "title", right: "dayGridMonth,prossimi" },
+  views: { prossimi: { type: "list", duration: { months: 12 }, buttonText: "elenco",
+                       titleFormat: { month: "short", year: "numeric" } } },
+  noEventsContent: "Nessun evento in questo periodo",
+  events: (info, ok, ko) => fetch("data/eventi.json" + nocache()).then(r => r.json()).then(ok).catch(ko),
+  eventClick: ({ event, jsEvent }) => {
+    jsEvent.preventDefault();
+    const p = event.extendedProps, prov = PROVINCE[p.provincia]?.[0] ?? "";
+    const quando = event.allDay
+      ? event.start.toLocaleDateString("it-IT", { day:"numeric", month:"long", year:"numeric" })
+      : event.start.toLocaleString("it-IT", { dateStyle:"long", timeStyle:"short" });
+    dettaglio.className = "";
+    dettaglio.innerHTML = `<strong>${esc(event.title)}</strong> · ${esc(quando)}<br>${esc(p.comune)}${p.luogo ? " · " + esc(p.luogo) : ""}`
+      + (prov ? ` · ${esc(prov)}` : "") + (p.link ? `<br><a href="${esc(p.link)}" target="_blank" rel="noopener">Più informazioni</a>` : "");
+  },
+});
+cal.render();
+
+// ---------------- mappa (si crea al primo clic sulla scheda: Leaflet vuole un contenitore visibile)
+let mappa = null;
+function apriMappa() {
+  if (mappa) { mappa.invalidateSize(); return; }
+  mappa = L.map("mappa").setView([43.35, 13.25], 8);
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(mappa);
+  fetch("data/luoghi.geojson" + nocache()).then(r => r.json()).then(dati => {
+    const strato = L.geoJSON(dati, {
+      pointToLayer: (f, ll) => L.circleMarker(ll, { radius: 9, weight: 3, color: "#17211C",
+                                                   fillColor: f.properties.colore, fillOpacity: .95 }),
+      onEachFeature: (f, layer) => { const p = f.properties;
+        layer.bindPopup(`<strong>${esc(p.nome)}</strong><br>${esc(CATEGORIE[p.categoria] ?? "")}<br>${esc(p.indirizzo)}`
+          + (p.link ? `<br><a href="${esc(p.link)}" target="_blank" rel="noopener">Sito</a>` : "")); },
+    }).addTo(mappa);
+    if (dati.features.length) mappa.fitBounds(strato.getBounds().pad(0.3), { maxZoom: 12 });
+    else document.getElementById("mappa-vuota").hidden = false;
+  });
+  document.getElementById("legenda").innerHTML = Object.values(PROVINCE).slice(0, 5)
+    .map(([n, c]) => `<span style="--c:${c}">${n}</span>`).join("");
+}
+
+// ---------------- schede
+const schede = { "tab-cal": "pan-cal", "tab-map": "pan-map" };
+function mostra(id) {
+  for (const [t, p] of Object.entries(schede)) {
+    document.getElementById(t).setAttribute("aria-selected", t === id);
+    document.getElementById(p).hidden = t !== id;
+  }
+  if (id === "tab-map") apriMappa(); else cal.updateSize();
+  history.replaceState(null, "", id === "tab-map" ? "#mappa" : "#calendario");
+}
+for (const t of Object.keys(schede)) document.getElementById(t).addEventListener("click", () => mostra(t));
+if (location.hash === "#mappa") mostra("tab-map");
+</script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+[
+ {
+  "title": "Comics on the Road",
+  "start": "2026-02-14",
+  "end": "2026-02-16",
+  "allDay": true,
+  "color": "#C0392B",
+  "extendedProps": {
+   "comune": "Piediripa di Macerata",
+   "luogo": "Centro Commerciale Val di Chienti",
+   "provincia": "macerata",
+   "link": "https://www.cosplayersitaliani.it/fiere-comics/comics-on-the-road-2026/",
+   "tipo": "fiera"
+  }
+ },
+ {
+  "title": "Ancona Comics & Games",
+  "start": "2026-04-25",
+  "end": "2026-04-27",
+  "allDay": true,
+  "color": "#1F5FAD",
+  "extendedProps": {
+   "comune": "Ancona",
+   "luogo": "Mole Vanvitelliana",
+   "provincia": "ancona",
+   "link": "https://www.cosplayersitaliani.it/fiere-comics/ancona-comics-2026/",
+   "tipo": "fiera"
+  }
+ },
+ {
+  "title": "Falcomics",
+  "start": "2026-05-15",
+  "end": "2026-05-18",
+  "allDay": true,
+  "color": "#1F5FAD",
+  "extendedProps": {
+   "comune": "Falconara Marittima",
+   "luogo": null,
+   "provincia": "ancona",
+   "link": "https://www.prossimafiera.it/marche",
+   "tipo": "fiera"
+  }
+ },
+ {
+  "title": "San Beach Comix",
+  "start": "2026-07-04",
+  "end": "2026-07-06",
+  "allDay": true,
+  "color": "#9B1B30",
+  "extendedProps": {
+   "comune": "San Benedetto del Tronto",
+   "luogo": null,
+   "provincia": "ascoli",
+   "link": "https://www.cosplayersitaliani.it/fiere-comics/san-beach-comix-2026/",
+   "tipo": "fiera"
+  }
+ },
+ {
+  "title": "Sarnano Comix",
+  "start": "2026-07-11",
+  "end": "2026-07-13",
+  "allDay": true,
+  "color": "#C0392B",
+  "extendedProps": {
+   "comune": "Sarnano",
+   "luogo": "centro storico",
+   "provincia": "macerata",
+   "link": "https://www.cosplayersitaliani.it/fiere-comics/sarano-comix-2026/",
+   "tipo": "fiera"
+  }
+ },
+ {
+  "title": "Cupra Play&Cosplay",
+  "start": "2026-07-31",
+  "end": "2026-08-03",
+  "allDay": true,
+  "color": "#9B1B30",
+  "extendedProps": {
+   "comune": "Cupra Marittima",
+   "luogo": "Lungomare Pineta Centrale",
+   "provincia": "ascoli",
+   "link": "https://www.cosplayersitaliani.it/fiere-comics/cupra-playcosplay/",
+   "tipo": "fiera"
+  }
+ },
+ {
+  "title": "Smirra Game Fest",
+  "start": "2026-09-12",
+  "end": "2026-09-13",
+  "allDay": true,
+  "color": "#E3B23C",
+  "extendedProps": {
+   "comune": "Smirra di Cagli",
+   "luogo": "Centro Polivalente di Smirra",
+   "provincia": "pesaro_urbino",
+   "link": "https://www.cosplayersitaliani.it/fiere_comics_categoria/fiere-comics-marche/",
+   "tipo": "fiera"
+  }
+ },
+ {
+  "title": "Fiastra Fantasy",
+  "start": "2026-09-12",
+  "end": "2026-09-14",
+  "allDay": true,
+  "color": "#C0392B",
+  "extendedProps": {
+   "comune": "Fiastra",
+   "luogo": null,
+   "provincia": "macerata",
+   "link": "https://www.prossimafiera.it/marche",
+   "tipo": "fiera"
+  }
+ },
+ {
+  "title": "Senigallia Fantasy Festival (Utopica)",
+  "start": "2026-09-18",
+  "end": "2026-09-21",
+  "allDay": true,
+  "color": "#1F5FAD",
+  "extendedProps": {
+   "comune": "Senigallia",
+   "luogo": "Foro Annonario",
+   "provincia": "ancona",
+   "link": "https://www.cosplayersitaliani.it/fiere_comics_categoria/fiere-comics-marche/",
+   "tipo": "fiera"
+  }
+ },
+ {
+  "title": "Linus Festival",
+  "start": "2026-09-25",
+  "end": "2026-09-28",
+  "allDay": true,
+  "color": "#9B1B30",
+  "extendedProps": {
+   "comune": "Ascoli Piceno",
+   "luogo": null,
+   "provincia": "ascoli",
+   "link": "https://www.prossimafiera.it/marche",
+   "tipo": "fiera"
+  }
+ },
+ {
+  "title": "Il mondo disegnato",
+  "start": "2026-10-02",
+  "end": "2026-10-05",
+  "allDay": true,
+  "color": "#9B1B30",
+  "extendedProps": {
+   "comune": "Grottammare",
+   "luogo": null,
+   "provincia": "ascoli",
+   "link": "https://www.prossimafiera.it/marche",
+   "tipo": "fiera"
+  }
+ },
+ {
+  "title": "FanoComics",
+  "start": "2026-10-17",
+  "end": "2026-10-19",
+  "allDay": true,
+  "color": "#E3B23C",
+  "extendedProps": {
+   "comune": "Fano",
+   "luogo": "MeMo – Mediateca Montanari",
+   "provincia": "pesaro_urbino",
+   "link": "https://www.cosplayersitaliani.it/fiere-comics/fanocomics-2026/",
+   "tipo": "fiera"
+  }
+ },
+ {
+  "title": "Epicomics",
+  "start": "2026-11-07",
+  "end": "2026-11-09",
+  "allDay": true,
+  "color": "#C0392B",
+  "extendedProps": {
+   "comune": "Macerata",
+   "luogo": "Centro Fiere Villa Potenza",
+   "provincia": "macerata",
+   "link": "https://www.prossimafiera.it/marche",
+   "tipo": "fiera"
+  }
+ }
+]
