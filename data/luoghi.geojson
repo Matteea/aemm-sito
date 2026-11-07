@@ -1,4 +1,23 @@
 {
  "type": "FeatureCollection",
- "features": []
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.5082717,
+     43.5714505
+    ]
+   },
+   "properties": {
+    "nome": "Fumetteria Welcomics",
+    "categoria": "fumetteria",
+    "indirizzo": "Via Valenti Ghino, 1, 60131 Ancona AN",
+    "provincia": "ancona",
+    "link": "https://www.instagram.com/fumetteria.welcomics/",
+    "colore": "#1F5FAD"
+   }
+  }
+ ]
 }
