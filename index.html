@@ -203,8 +203,11 @@ function apriMappa() {
           const testo = riempi(caso(P.personaggi[pid].luogo),
                                { luogo: p.nome, categoria: CATEGORIE[p.categoria] || "Luogo di interesse", indirizzo: p.indirizzo });
           const info = [riga(`📍 ${p.indirizzo}`),
-                        // Google Maps con le indicazioni: dal telefono apre l'app e si avvia il navigatore
-                        link(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`, "Portami qui (Google Maps)")];
+                        // Google Maps con le indicazioni: dal telefono apre l'app e si avvia il navigatore.
+                        // Nome + indirizzo e non le coordinate: con le coordinate Google si aggancia
+                        // all'attività più vicina al punto (successo con Welcomics), col nome trova la scheda giusta
+                        link(`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+                               p.indirizzo ? `${p.nome}, ${p.indirizzo}` : `${lat},${lon}`)}`, "Portami qui (Google Maps)")];
           if (p.link) info.push(link(p.link, "Sito o pagina social"));
           scheda(presMap, pid, testo, info);
           if (window.innerWidth <= 1000) presMap.scrollIntoView({ behavior: "smooth", block: "nearest" });
