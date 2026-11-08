@@ -203,7 +203,8 @@ function apriMappa() {
           const testo = riempi(caso(P.personaggi[pid].luogo),
                                { luogo: p.nome, categoria: CATEGORIE[p.categoria] || "Luogo di interesse", indirizzo: p.indirizzo });
           const info = [riga(`📍 ${p.indirizzo}`),
-                        link(`https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=18/${lat}/${lon}`, "Apri nella mappa")];
+                        // Google Maps con le indicazioni: dal telefono apre l'app e si avvia il navigatore
+                        link(`https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`, "Portami qui (Google Maps)")];
           if (p.link) info.push(link(p.link, "Sito o pagina social"));
           scheda(presMap, pid, testo, info);
           if (window.innerWidth <= 1000) presMap.scrollIntoView({ behavior: "smooth", block: "nearest" });
