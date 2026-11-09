@@ -101,6 +101,9 @@
                        border-radius:18px; padding:10px 10px 10px 6px; box-shadow:0 10px 30px rgba(0,0,0,.35); }
     .scena .presenta.vuota { display:none; }
     .presenta .fumetto { border-width:2px; }
+    /* con il bordo a 2px i triangolini vanno spostati di 1px, sennò resta una riga chiara tra punta e fumetto */
+    .presenta .fumetto::before { left:-12px; }
+    .presenta .fumetto::after { left:-7px; }
     .presenta .chiudi { display:block; position:absolute; top:8px; right:8px; z-index:1;
                         width:34px; height:34px; border-radius:50%; border:2px solid var(--scuro);
                         background:var(--carta); color:var(--testo); font:700 18px/1 Poppins, sans-serif; cursor:pointer; }
