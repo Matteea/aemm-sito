@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet-gesture-handling@1.2.2/dist/leaflet-gesture-handling.min.css">
 <style>
   :root { --verde:#5DA94A; --blu:#2F7FB8; --giallo:#F2C14E; --scuro:#17211C; --crema:#F5F1E6;
           --carta:#FFFFFF; --testo:#17211C; --tenue:#5b6660; --bordo:#e3ddcc; --fumetto:#FFFFFF; }
@@ -68,20 +69,64 @@
   footer { text-align:center; color:var(--tenue); font-size:12px; padding:0 16px 24px; }
   [hidden] { display:none !important; }
 
-  /* schermi stretti: una colonna; Marche in alto, il presentatore sotto il contenuto */
+  .chiudi, .altro { display:none; }
+
+  /* schermi stretti (telefono, tablet in verticale): una colonna.
+     Marche è una striscia compatta sopra il contenuto (si espande col tocco);
+     chi presenta un evento o un luogo compare in un fumetto fisso in basso, sopra mappa e calendario. */
   @media (max-width: 1000px) {
-    .scena { grid-template-columns:minmax(0,1fr); }
-    .scena .marche { order:1; } .scena .pannello { order:2; } .scena .presenta { order:3; }
-    .guida { position:static; flex-direction:row; align-items:flex-start; gap:12px; }
-    .guida .figura { width:96px; height:150px; flex:none; }
+    .scena { grid-template-columns:minmax(0,1fr); gap:10px; }
+    .scena .marche { order:1; } .scena .pannello { order:2; }
+    .guida { position:static; flex-direction:row; align-items:flex-start; gap:10px; }
+    .guida .figura { width:72px; height:112px; flex:none; }
     .guida .testo { flex:1; min-width:0; align-items:flex-start; }
-    .fumetto { margin-top:8px; }
+    .guida .nome { font-size:13.5px; margin-top:0; padding:3px 12px; }
+    .fumetto { margin-top:8px; font-size:14px; padding:10px 12px; }
     .fumetto::before { top:14px; left:-13px; transform:none; border:10px solid transparent;
                        border-right-color:var(--scuro); border-left:0; }
     .fumetto::after { top:16px; left:-8px; transform:none; border:8px solid transparent;
                       border-right-color:var(--fumetto); border-left:0; }
+
+    /* Marche: due righe e "leggi tutto" */
+    .marche { cursor:pointer; }
+    .marche .figura { width:56px; height:84px; }
+    .marche:not(.espansa) .corpo { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+    .marche .altro { display:inline; border:0; background:none; padding:0; margin-top:4px;
+                     font:600 13px Poppins, sans-serif; color:var(--blu); cursor:pointer; }
+
+    /* chi presenta: nascosto finché non si tocca qualcosa, poi fumetto fisso in basso */
+    .scena .presenta { position:fixed; z-index:1000; top:auto; left:8px; right:8px;
+                       bottom:calc(8px + env(safe-area-inset-bottom, 0px)); max-width:640px; margin:0 auto;
+                       max-height:48vh; overflow:auto; background:var(--carta); border:2px solid var(--scuro);
+                       border-radius:18px; padding:10px 10px 10px 6px; box-shadow:0 10px 30px rgba(0,0,0,.35); }
+    .scena .presenta.vuota { display:none; }
+    .presenta .fumetto { border-width:2px; }
+    .presenta .chiudi { display:block; position:absolute; top:8px; right:8px; z-index:1;
+                        width:34px; height:34px; border-radius:50%; border:2px solid var(--scuro);
+                        background:var(--carta); color:var(--testo); font:700 18px/1 Poppins, sans-serif; cursor:pointer; }
+    body.foglio main { padding-bottom:48vh; }
+
+    #mappa { height:min(58vh,520px); }
     .fc .fc-header-toolbar { flex-wrap:wrap; justify-content:center; gap:8px; }
     .pannello { padding:8px; }
+  }
+  @media (max-width: 1000px) and (min-width: 600px) {
+    .guida .figura { width:96px; height:150px; }
+    .marche .figura { width:64px; height:96px; }
+  }
+
+  /* schermi bassi (telefono in orizzontale): titolo compatto, più spazio a mappa e calendario */
+  @media (max-height: 520px) {
+    .alto { padding-top:8px; gap:10px; }
+    .alto img { width:40px; height:40px; border-width:2px; }
+    h1 { font-size:20px; }
+    .alto p { display:none; }
+    nav button { padding:6px 14px; font-size:14px; }
+    #mappa { height:calc(100vh - 150px); min-height:200px; }
+    .marche .figura { width:44px; height:66px; }
+    .marche:not(.espansa) .corpo { -webkit-line-clamp:1; }
+    .scena .presenta { max-height:62vh; }
+    .presenta .figura { width:56px; height:84px; }
   }
 </style>
 </head>
@@ -116,12 +161,15 @@
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.15/locales/it.global.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-gesture-handling@1.2.2/dist/leaflet-gesture-handling.min.js"></script>
 <script>
 const CATEGORIE = { fumetteria:"Fumetteria", fiera:"Sede di fiere", ritrovo:"Punto di ritrovo", altro:"Luogo di interesse" };
 const nocache = () => "?v=" + Math.floor(Date.now() / 300000);          // dati freschi ogni 5 minuti
 const caso = a => a[Math.floor(Math.random() * a.length)];
 const riempi = (t, v) => t.replace(/\{(\w+)\}/g, (m, k) => v[k] ?? "");
 let P = null;                                                             // personaggi.json
+const touch = matchMedia("(pointer: coarse)").matches;                    // telefono o tablet
+const stretto = () => matchMedia("(max-width: 1000px)").matches;          // layout a una colonna
 
 // ---------------- la scheda di un personaggio (figura, nome, fumetto)
 function scheda(el, pid, testo, info, vuota) {
@@ -135,12 +183,34 @@ function scheda(el, pid, testo, info, vuota) {
   const nome = document.createElement("div"); nome.className = "nome";
   nome.textContent = `${p.nome} · ${p.titolo}`; nome.style.setProperty("--c", p.colore);
   const fum = document.createElement("div"); fum.className = "fumetto";
+  const corpo = document.createElement("div"); corpo.className = "corpo"; fum.append(corpo);
   for (const pezzo of testo.split(/(\/[a-z][a-z-]*)/)) {          // i comandi (/proponi-evento) restano interi
-    if (/^\/[a-z]/.test(pezzo)) { const c = document.createElement("code"); c.textContent = pezzo; fum.append(c); }
-    else fum.append(pezzo);
+    if (/^\/[a-z]/.test(pezzo)) { const c = document.createElement("code"); c.textContent = pezzo; corpo.append(c); }
+    else corpo.append(pezzo);
   }
   if (info) { const i = document.createElement("div"); i.className = "info"; i.append(...info); fum.append(i); }
+  if (el.classList.contains("marche")) {                         // su telefono: due righe e "leggi tutto"
+    const b = document.createElement("button"); b.className = "altro"; b.type = "button";
+    b.textContent = el.classList.contains("espansa") ? "riduci" : "leggi tutto"; fum.append(b);
+  }
   box.append(nome, fum); el.append(fig, box);
+  if (el.classList.contains("presenta")) {                       // su telefono: fumetto fisso in basso, con la X
+    const x = document.createElement("button"); x.className = "chiudi"; x.type = "button";
+    x.setAttribute("aria-label", "Chiudi"); x.textContent = "×";
+    x.addEventListener("click", () => chiudiFoglio(el)); el.prepend(x);
+    el.scrollTop = 0;
+    document.body.classList.toggle("foglio", !vuota);
+  }
+}
+function chiudiFoglio(el) {
+  el.classList.add("vuota"); document.body.classList.remove("foglio");
+}
+for (const el of document.querySelectorAll(".guida.marche")) {
+  el.addEventListener("click", () => {
+    if (!stretto()) return;
+    el.classList.toggle("espansa");
+    const b = el.querySelector(".altro"); if (b) b.textContent = el.classList.contains("espansa") ? "riduci" : "leggi tutto";
+  });
 }
 const riga = t => { const s = document.createElement("div"); s.textContent = t; return s; };
 const link = (href, t) => { const d = document.createElement("div"), a = document.createElement("a");
@@ -179,7 +249,6 @@ const cal = new FullCalendar.Calendar(document.getElementById("calendario"), {
     const info = [riga(`📅 ${data}`), riga(`📍 ${x.comune}${x.luogo ? " · " + x.luogo : ""}`)];
     if (x.link) info.push(link(x.link, "Più informazioni"));
     scheda(presCal, pid, testo, info);
-    if (window.innerWidth <= 1000) presCal.scrollIntoView({ behavior: "smooth", block: "nearest" });
   },
 });
 
@@ -188,15 +257,18 @@ let mappa = null;
 const presMap = document.getElementById("map-pres");
 function apriMappa() {
   if (mappa) { mappa.invalidateSize(); return; }
-  mappa = L.map("mappa").setView([43.35, 13.25], 8);
+  // su touch: un dito scorre la pagina, due dita spostano la mappa (plugin gesture handling);
+  // tolleranza del renderer: i punti si prendono anche toccando un po' a lato
+  mappa = L.map("mappa", { gestureHandling: touch, renderer: L.canvas({ tolerance: touch ? 14 : 4 }) })
+           .setView([43.35, 13.25], 8);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(mappa);
   fetch("data/luoghi.geojson" + nocache()).then(r => r.json()).then(dati => {
     const strato = L.geoJSON(dati, {
-      pointToLayer: (f, ll) => L.circleMarker(ll, { radius: 10, weight: 3, color: "#17211C",
+      pointToLayer: (f, ll) => L.circleMarker(ll, { radius: touch ? 12 : 10, weight: 3, color: "#17211C",
                                                    fillColor: f.properties.colore, fillOpacity: .95 }),
       onEachFeature: (f, layer) => {
-        layer.bindTooltip(f.properties.nome);
+        if (!touch) layer.bindTooltip(f.properties.nome);
         layer.on("click", () => {
           const p = f.properties, pid = P.personaggi[p.provincia] ? p.provincia : "marche";
           const [lon, lat] = f.geometry.coordinates;
@@ -210,7 +282,7 @@ function apriMappa() {
                                p.indirizzo ? `${p.nome}, ${p.indirizzo}` : `${lat},${lon}`)}`, "Portami qui (Google Maps)")];
           if (p.link) info.push(link(p.link, "Sito o pagina social"));
           scheda(presMap, pid, testo, info);
-          if (window.innerWidth <= 1000) presMap.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          if (stretto()) centraSopraFoglio(layer.getLatLng());
         });
       },
     }).addTo(mappa);
@@ -221,6 +293,17 @@ function apriMappa() {
     .map(k => `<span style="--c:${P.personaggi[k].colore}">${P.personaggi[k].nome}</span>`).join("");
 }
 
+// su telefono il fumetto copre la parte bassa dello schermo: porto la mappa in alto
+// e sposto il punto toccato a metà della parte di mappa che resta visibile
+function centraSopraFoglio(ll) {
+  const box = document.getElementById("mappa");
+  window.scrollTo({ top: window.scrollY + box.getBoundingClientRect().top - 8 });
+  const r = box.getBoundingClientRect(), foglio = presMap.getBoundingClientRect().top;
+  const alto = Math.max(r.top, 0), basso = Math.min(r.bottom, foglio - 8);
+  const p = mappa.latLngToContainerPoint(ll);
+  mappa.panBy([p.x - r.width / 2, r.top + p.y - (alto + basso) / 2]);
+}
+
 // ---------------- schede Calendario / Mappa
 const schede = { "tab-cal": "pan-cal", "tab-map": "pan-map" };
 function mostra(id) {
@@ -228,6 +311,7 @@ function mostra(id) {
     document.getElementById(t).setAttribute("aria-selected", t === id);
     document.getElementById(p).hidden = t !== id;
   }
+  for (const el of document.querySelectorAll(".scena .presenta")) if (stretto()) chiudiFoglio(el);
   if (id === "tab-map") apriMappa(); else cal.updateSize();
   history.replaceState(null, "", id === "tab-map" ? "#mappa" : "#calendario");
 }

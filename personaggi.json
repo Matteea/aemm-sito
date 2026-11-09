@@ -12,13 +12,13 @@
    "colore": "#3BA55C",
    "img": "img/marche.webp",
    "evento": [
-    "Segnatevi la data: {fiera} è {quando}, a {comune}. L'ho già scritta in rosso sul calendario, e il picchio ha bussato tre volte per approvare."
+    "Segnatevi la data: {fiera} è {quando}, a {comune}. L'ho già scritta in rosso sul calendario, e Pico ha bussato tre volte per approvare."
    ],
    "evento_passato": [
     "{fiera}, a {comune}, è già passato. L'ho lasciato in calendario per ricordo: al prossimo anno!"
    ],
    "luogo": [
-    "{luogo}: {categoria}, in {indirizzo}. Ve lo segnalo io, e il picchio approva."
+    "{luogo}: {categoria}, in {indirizzo}. Ve lo segnalo io, e Pico approva."
    ]
   },
   "pesaro_urbino": {
