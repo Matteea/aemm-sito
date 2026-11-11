@@ -14,6 +14,18 @@
   }
  },
  {
+  "title": "🎂 Il Duca compie gli anni",
+  "start": "2026-02-28",
+  "end": "2026-03-01",
+  "allDay": true,
+  "color": "#E3B23C",
+  "extendedProps": {
+   "provincia": "pesaro_urbino",
+   "comune": "",
+   "tipo": "compleanno"
+  }
+ },
+ {
   "title": "Ancona Comics & Games",
   "start": "2026-04-25",
   "end": "2026-04-27",
@@ -25,6 +37,18 @@
    "provincia": "ancona",
    "link": "https://www.cosplayersitaliani.it/fiere-comics/ancona-comics-2026/",
    "tipo": "fiera"
+  }
+ },
+ {
+  "title": "🎂 Il Capitano compie gli anni",
+  "start": "2026-05-04",
+  "end": "2026-05-05",
+  "allDay": true,
+  "color": "#1F5FAD",
+  "extendedProps": {
+   "provincia": "ancona",
+   "comune": "",
+   "tipo": "compleanno"
   }
  },
  {
@@ -81,6 +105,42 @@
    "provincia": "ascoli",
    "link": "https://www.cosplayersitaliani.it/fiere-comics/cupra-playcosplay/",
    "tipo": "fiera"
+  }
+ },
+ {
+  "title": "🎂 Il Cavaliere compie gli anni",
+  "start": "2026-08-05",
+  "end": "2026-08-06",
+  "allDay": true,
+  "color": "#9B1B30",
+  "extendedProps": {
+   "provincia": "ascoli",
+   "comune": "",
+   "tipo": "compleanno"
+  }
+ },
+ {
+  "title": "🎂 L'Alfiera compie gli anni",
+  "start": "2026-08-15",
+  "end": "2026-08-16",
+  "allDay": true,
+  "color": "#7FB7E8",
+  "extendedProps": {
+   "provincia": "fermo",
+   "comune": "",
+   "tipo": "compleanno"
+  }
+ },
+ {
+  "title": "🎂 La Diva compie gli anni",
+  "start": "2026-08-31",
+  "end": "2026-09-01",
+  "allDay": true,
+  "color": "#C0392B",
+  "extendedProps": {
+   "provincia": "macerata",
+   "comune": "",
+   "tipo": "compleanno"
   }
  },
  {
@@ -179,6 +239,90 @@
    "provincia": "macerata",
    "link": "https://www.prossimafiera.it/marche",
    "tipo": "fiera"
+  }
+ },
+ {
+  "title": "🎂 La Custode compie gli anni",
+  "start": "2026-12-10",
+  "end": "2026-12-11",
+  "allDay": true,
+  "color": "#3BA55C",
+  "extendedProps": {
+   "provincia": "marche",
+   "comune": "",
+   "tipo": "compleanno"
+  }
+ },
+ {
+  "title": "🎂 Il Duca compie gli anni",
+  "start": "2027-02-28",
+  "end": "2027-03-01",
+  "allDay": true,
+  "color": "#E3B23C",
+  "extendedProps": {
+   "provincia": "pesaro_urbino",
+   "comune": "",
+   "tipo": "compleanno"
+  }
+ },
+ {
+  "title": "🎂 Il Capitano compie gli anni",
+  "start": "2027-05-04",
+  "end": "2027-05-05",
+  "allDay": true,
+  "color": "#1F5FAD",
+  "extendedProps": {
+   "provincia": "ancona",
+   "comune": "",
+   "tipo": "compleanno"
+  }
+ },
+ {
+  "title": "🎂 Il Cavaliere compie gli anni",
+  "start": "2027-08-05",
+  "end": "2027-08-06",
+  "allDay": true,
+  "color": "#9B1B30",
+  "extendedProps": {
+   "provincia": "ascoli",
+   "comune": "",
+   "tipo": "compleanno"
+  }
+ },
+ {
+  "title": "🎂 L'Alfiera compie gli anni",
+  "start": "2027-08-15",
+  "end": "2027-08-16",
+  "allDay": true,
+  "color": "#7FB7E8",
+  "extendedProps": {
+   "provincia": "fermo",
+   "comune": "",
+   "tipo": "compleanno"
+  }
+ },
+ {
+  "title": "🎂 La Diva compie gli anni",
+  "start": "2027-08-31",
+  "end": "2027-09-01",
+  "allDay": true,
+  "color": "#C0392B",
+  "extendedProps": {
+   "provincia": "macerata",
+   "comune": "",
+   "tipo": "compleanno"
+  }
+ },
+ {
+  "title": "🎂 La Custode compie gli anni",
+  "start": "2027-12-10",
+  "end": "2027-12-11",
+  "allDay": true,
+  "color": "#3BA55C",
+  "extendedProps": {
+   "provincia": "marche",
+   "comune": "",
+   "tipo": "compleanno"
   }
  }
 ]
