@@ -19,6 +19,9 @@
    ],
    "luogo": [
     "{luogo}: {categoria}, in {indirizzo}. Ve lo segnalo io, e Pico approva."
+   ],
+   "compleanno": [
+    "Il 10 dicembre, Giornata delle Marche, è il mio compleanno. La sera prima ci sono i focaracci: l'unica notte in cui i miei fratelli non litigano."
    ]
   },
   "pesaro_urbino": {
@@ -35,6 +38,9 @@
    ],
    "luogo": [
     "Vén otra! {luogo} è una tappa per chi ha gusto: {categoria}, in {indirizzo}. Il Duca approva."
+   ],
+   "compleanno": [
+    "Sono nato il 29 febbraio, come Rossini. Il vero compleanno ce l'ho ogni quattro anni; negli altri festeggio il 28 e, sì, me ne lamento."
    ]
   },
   "ancona": {
@@ -51,6 +57,9 @@
    ],
    "luogo": [
     "Toh và, {luogo}. {categoria}, in {indirizzo}. Bè, ce se trova roba bona: andatece, ma 'n fate casino."
+   ],
+   "compleanno": [
+    "Il 4 maggio, San Ciriaco. Il mio compleanno. Niente feste, grazie. Però gli auguri... quelli fateli."
    ]
   },
   "macerata": {
@@ -67,6 +76,9 @@
    ],
    "luogo": [
     "Applausi per {luogo}! {categoria} in {indirizzo}: un palcoscenico per veri appassionati."
+   ],
+   "compleanno": [
+    "Il 31 agosto, San Giuliano: il mio compleanno è il gran finale dell'estate. Applausi, fiori e almeno un bis!"
    ]
   },
   "fermo": {
@@ -83,6 +95,9 @@
    ],
    "luogo": [
     "Ammàzza, {luogo}! {categoria} in {indirizzo}. Ce vado sempre... quando Ascoli me lo lascia fà!"
+   ],
+   "compleanno": [
+    "Il 15 agosto, l'Assunta: il Palio di Fermo e il mio compleanno nello stesso giorno! Il più bello dell'anno!"
    ]
   },
   "ascoli": {
@@ -99,6 +114,9 @@
    ],
    "luogo": [
     "Jame! {luogo}, {categoria} in {indirizzo}. Il Cavaliere lo raccomanda. Pozz i bbe!"
+   ],
+   "compleanno": [
+    "Il 5 agosto, Sant'Emidio, nel tempo della Quintana: il giorno giusto per compiere gli anni. Il regalo? Una lancia nuova."
    ]
   }
  }

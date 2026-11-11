@@ -245,6 +245,11 @@ const cal = new FullCalendar.Calendar(document.getElementById("calendario"), {
     jsEvent.preventDefault();
     const x = event.extendedProps, pid = P.personaggi[x.provincia] ? x.provincia : "marche";
     const q = quando(event.start, event.end), v = { fiera: event.title, comune: x.comune, quando: q.testo };
+    if (x.tipo === "compleanno") {          // i compleanni dei sei: parla il festeggiato
+      const giorno = event.start.toLocaleDateString("it-IT", { day: "numeric", month: "long" });
+      scheda(presCal, pid, caso(P.personaggi[pid].compleanno), [riga(`🎂 ${giorno}${q.testo && !q.passato ? " · " + q.testo : ""}`)]);
+      return;
+    }
     const testo = riempi(caso(q.passato ? P.personaggi[pid].evento_passato : P.personaggi[pid].evento), v);
     const data = event.allDay
       ? event.start.toLocaleDateString("it-IT", { day: "numeric", month: "long", year: "numeric" })
