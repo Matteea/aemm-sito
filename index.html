@@ -348,6 +348,15 @@ function mostra(id) {
 // ---------------- avvio: prima i personaggi, poi il resto
 fetch("personaggi.json" + nocache()).then(r => r.json()).then(dati => {
   P = dati;
+  // QR della carta otaku (#carta=CODICE): si va alla pagina dei timbri servita dal bot (fiera_web.py)
+  const carta = (location.hash.match(/^#carta=([A-Z0-9]{4,12})$/) || [])[1];
+  if (carta && P.fiera_web) {
+    const dest = `${P.fiera_web}/c/${carta}`;
+    document.querySelector("main").insertAdjacentHTML("afterbegin",
+      `<div class="pannello" style="margin-bottom:14px"><b>🎫 Carta otaku ${carta}</b><br>Ti porto alla pagina dei
+       timbri… <a href="${dest}">apri</a>. Se non si apre, lo staff può usare <code>/timbra ${carta}</code> nel Discord.</div>`);
+    setTimeout(() => { location.href = dest; }, 1500);
+  }
   scheda(document.getElementById("cal-marche"), "marche", P.intro.calendario);
   scheda(document.getElementById("map-marche"), "marche", P.intro.mappa);
   scheda(presCal, "marche", P.intro.attesa_evento, null, true);
