@@ -38,6 +38,14 @@
   .legenda { display:flex; flex-wrap:wrap; gap:6px 14px; margin:10px 2px 0; font-size:13px; color:var(--tenue); }
   .legenda span::before { content:""; display:inline-block; width:11px; height:11px; border-radius:50%;
                           margin-right:6px; background:var(--c); vertical-align:-1px; }
+  .legenda .icone { flex-basis:100%; display:flex; flex-wrap:wrap; gap:4px 14px; }
+  .legenda .icone i { font-style:normal; }
+  /* punti della mappa: icona della categoria nel cerchio col colore della provincia */
+  .punto span { display:flex; align-items:center; justify-content:center; width:100%; height:100%;
+                border-radius:50%; background:#fff; border:3px solid var(--c); box-sizing:border-box;
+                box-shadow:0 1px 4px rgba(0,0,0,.35); font-size:15px; line-height:1; cursor:pointer; }
+  .punto { background:none; border:none; }
+  @media (pointer: coarse) { .punto span { font-size:19px; } }
 
   /* il personaggio con il fumetto */
   .guida { position:sticky; top:12px; display:flex; flex-direction:column; align-items:center; text-align:left; }
@@ -166,7 +174,13 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet-gesture-handling@1.2.2/dist/leaflet-gesture-handling.min.js"></script>
 <script>
-const CATEGORIE = { fumetteria:"Fumetteria", fiera:"Sede di fiere", ritrovo:"Punto di ritrovo", altro:"Luogo di interesse" };
+// le stesse chiavi di TIPI_LUOGO in bots/proposte.py: nome nel fumetto e icona sulla mappa
+const CATEGORIE = {
+  fumetteria: ["Fumetteria", "📚"], negozio: ["Negozio di gadget e figure", "🎮"], fiera: ["Sede di fiere", "🎪"],
+  ristorante: ["Ristorante giapponese", "🍜"], bar: ["Bar a tema", "🧋"], ritrovo: ["Punto di ritrovo", "🤝"],
+  altro: ["Luogo di interesse", "📍"],
+};
+const categoria = k => CATEGORIE[k] || CATEGORIE.altro;
 const nocache = () => "?v=" + Math.floor(Date.now() / 300000);          // dati freschi ogni 5 minuti
 const caso = a => a[Math.floor(Math.random() * a.length)];
 const riempi = (t, v) => t.replace(/\{(\w+)\}/g, (m, k) => v[k] ?? "");
@@ -273,15 +287,21 @@ function apriMappa() {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(mappa);
   fetch("data/luoghi.geojson" + nocache()).then(r => r.json()).then(dati => {
     const strato = L.geoJSON(dati, {
-      pointToLayer: (f, ll) => L.circleMarker(ll, { radius: touch ? 12 : 10, weight: 3, color: "#17211C",
-                                                   fillColor: f.properties.colore, fillOpacity: .95 }),
+      // icona della categoria dentro un cerchio col colore della provincia (la legenda resta valida);
+      // più grande su touch, perché i marcatori HTML non hanno la tolleranza del disegno su canvas
+      pointToLayer: (f, ll) => {
+        const d = touch ? 38 : 30;
+        return L.marker(ll, { icon: L.divIcon({ className: "punto", iconSize: [d, d], iconAnchor: [d / 2, d / 2],
+          html: `<span style="--c:${f.properties.colore}">${categoria(f.properties.categoria)[1]}</span>` }),
+          title: touch ? "" : f.properties.nome, alt: f.properties.nome });
+      },
       onEachFeature: (f, layer) => {
-        if (!touch) layer.bindTooltip(f.properties.nome);
+        if (!touch) layer.bindTooltip(f.properties.nome, { direction: "top", offset: [0, -14] });
         layer.on("click", () => {
           const p = f.properties, pid = P.personaggi[p.provincia] ? p.provincia : "marche";
           const [lon, lat] = f.geometry.coordinates;
           const testo = riempi(caso(P.personaggi[pid].luogo),
-                               { luogo: p.nome, categoria: CATEGORIE[p.categoria] || "Luogo di interesse", indirizzo: p.indirizzo });
+                               { luogo: p.nome, categoria: categoria(p.categoria)[0], indirizzo: p.indirizzo });
           const info = [riga(`📍 ${p.indirizzo}`),
                         // Google Maps con le indicazioni: dal telefono apre l'app e si avvia il navigatore.
                         // Nome + indirizzo e non le coordinate: con le coordinate Google si aggancia
@@ -298,7 +318,8 @@ function apriMappa() {
     else scheda(presMap, "marche", "Ancora nessun luogo sulla mappa: il primo proponilo tu nel Discord, con /proponi-luogo!", null, true);
   });
   document.getElementById("legenda").innerHTML = ["pesaro_urbino", "ancona", "macerata", "fermo", "ascoli"]
-    .map(k => `<span style="--c:${P.personaggi[k].colore}">${P.personaggi[k].nome}</span>`).join("");
+    .map(k => `<span style="--c:${P.personaggi[k].colore}">${P.personaggi[k].nome}</span>`).join("")
+    + `<div class="icone">${Object.values(CATEGORIE).map(([nome, ico]) => `<i>${ico} ${nome}</i>`).join("")}</div>`;
 }
 
 // su telefono il fumetto copre la parte bassa dello schermo: porto la mappa in alto

@@ -1,7 +1,7 @@
 {
  "intro": {
   "calendario": "Benvenuti nel calendario di famiglia! Qui segno tutte le fiere di anime, manga e cosplay delle Marche, e gli appuntamenti del nostro server. Toccate un evento: ve lo presenta il fratello della sua provincia. Ne conoscete uno che manca? Proponetelo nel Discord con /proponi-evento.",
-  "mappa": "Questa è la mappa dei posti che contano: fumetterie, sedi delle fiere e i nostri punti di ritrovo, tutti controllati dallo staff. Toccate un punto e vi risponde chi abita lì. Un posto da aggiungere? Usate /proponi-luogo nel Discord.",
+  "mappa": "Questa è la mappa dei posti che contano: fumetterie, negozi di gadget, sedi delle fiere, ristoranti giapponesi, bar a tema e i nostri punti di ritrovo, tutti controllati dallo staff. Toccate un punto e vi risponde chi abita lì. Un posto da aggiungere? Usate /proponi-luogo nel Discord.",
   "attesa_evento": "Tocca un evento: te lo presenta il personaggio della sua provincia.",
   "attesa_luogo": "Tocca un punto sulla mappa: te lo presenta il personaggio della sua provincia."
  },
