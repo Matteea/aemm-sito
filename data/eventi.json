@@ -1,5 +1,19 @@
 [
  {
+  "title": "Appignavalon",
+  "start": "2025-06-28",
+  "end": "2025-06-30",
+  "allDay": true,
+  "color": "#C0392B",
+  "extendedProps": {
+   "comune": "Appignano",
+   "luogo": "centro storico",
+   "provincia": "macerata",
+   "link": "https://www.eventiesagre.it/Fiere_Tempo+Libero/21194981_Appignavalon+A+Appignano.html",
+   "tipo": "fiera"
+  }
+ },
+ {
   "title": "Comics on the Road",
   "start": "2026-02-14",
   "end": "2026-02-16",
@@ -62,6 +76,20 @@
    "luogo": null,
    "provincia": "ancona",
    "link": "https://www.prossimafiera.it/marche",
+   "tipo": "fiera"
+  }
+ },
+ {
+  "title": "Ascoli Comics & Games",
+  "start": "2026-06-13",
+  "end": "2026-06-15",
+  "allDay": true,
+  "color": "#9B1B30",
+  "extendedProps": {
+   "comune": "Ascoli Piceno",
+   "luogo": "centro storico",
+   "provincia": "ascoli",
+   "link": "https://www.fondazionecarisap.it/ascoli-comics-and-games-2026-cultura-pop-gioco-e-partecipazione-nel-centro-storico-con-oltre-5-000-presenze/",
    "tipo": "fiera"
   }
  },
@@ -129,6 +157,20 @@
    "provincia": "fermo",
    "comune": "",
    "tipo": "compleanno"
+  }
+ },
+ {
+  "title": "Eden Comics Pesaro",
+  "start": "2026-08-22",
+  "end": "2026-08-24",
+  "allDay": true,
+  "color": "#E3B23C",
+  "extendedProps": {
+   "comune": "Pesaro",
+   "luogo": "Villa Caprile",
+   "provincia": "pesaro_urbino",
+   "link": "https://www.instagram.com/edencomicspesaro/",
+   "tipo": "fiera"
   }
  },
  {
@@ -275,6 +317,20 @@
    "provincia": "ancona",
    "comune": "",
    "tipo": "compleanno"
+  }
+ },
+ {
+  "title": "Ascoli Comics & Games",
+  "start": "2027-06-11",
+  "end": "2027-06-14",
+  "allDay": true,
+  "color": "#9B1B30",
+  "extendedProps": {
+   "comune": "Ascoli Piceno",
+   "luogo": "centro storico",
+   "provincia": "ascoli",
+   "link": "https://www.fondazionecarisap.it/ascoli-comics-and-games-2026-cultura-pop-gioco-e-partecipazione-nel-centro-storico-con-oltre-5-000-presenze/",
+   "tipo": "fiera"
   }
  },
  {
