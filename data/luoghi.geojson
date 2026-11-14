@@ -18,6 +18,384 @@
     "link": "https://www.instagram.com/fumetteria.welcomics/",
     "colore": "#1F5FAD"
    }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.51653,
+     43.61818
+    ]
+   },
+   "properties": {
+    "nome": "Libreria ACME",
+    "categoria": "fumetteria",
+    "indirizzo": "Via Augusto Elia 23, Ancona",
+    "provincia": "ancona",
+    "link": null,
+    "colore": "#1F5FAD"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.51448,
+     43.56171
+    ]
+   },
+   "properties": {
+    "nome": "Dadi e Mattoncini Ancona",
+    "categoria": "negozio",
+    "indirizzo": "Via Pietro Filonzi, Ancona",
+    "provincia": "ancona",
+    "link": "https://www.dadiemattoncini.it",
+    "colore": "#1F5FAD"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.21777,
+     43.71452
+    ]
+   },
+   "properties": {
+    "nome": "Gasp Comics Senigallia",
+    "categoria": "fumetteria",
+    "indirizzo": "Via Mastai Ferretti 62, Senigallia",
+    "provincia": "ancona",
+    "link": null,
+    "colore": "#1F5FAD"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.20951,
+     43.70938
+    ]
+   },
+   "properties": {
+    "nome": "Dadi e Mattoncini Senigallia",
+    "categoria": "negozio",
+    "indirizzo": "Centro Commerciale Il Molino, Via Abbagnano 7, Senigallia",
+    "provincia": "ancona",
+    "link": "https://www.dadiemattoncini.it",
+    "colore": "#1F5FAD"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.23897,
+     43.52021
+    ]
+   },
+   "properties": {
+    "nome": "Fumetti!? Che passione",
+    "categoria": "fumetteria",
+    "indirizzo": "Via Giordano Bruno 4B, Jesi",
+    "provincia": "ancona",
+    "link": null,
+    "colore": "#1F5FAD"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.51118,
+     43.61865
+    ]
+   },
+   "properties": {
+    "nome": "Bamboo Bubble Tea",
+    "categoria": "bar",
+    "indirizzo": "Via del Gallo 1, Ancona",
+    "provincia": "ancona",
+    "link": "https://bamboobubbletea.it/",
+    "colore": "#1F5FAD"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.50327,
+     43.61397
+    ]
+   },
+   "properties": {
+    "nome": "Mole Vanvitelliana",
+    "categoria": "fiera",
+    "indirizzo": "Banchina Giovanni da Chio 28, Ancona",
+    "provincia": "ancona",
+    "link": null,
+    "colore": "#1F5FAD"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.21904,
+     43.71605
+    ]
+   },
+   "properties": {
+    "nome": "Foro Annonario",
+    "categoria": "fiera",
+    "indirizzo": "Foro Annonario, Senigallia",
+    "provincia": "ancona",
+    "link": null,
+    "colore": "#1F5FAD"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     12.90888,
+     43.90563
+    ]
+   },
+   "properties": {
+    "nome": "Il Ragno Comic Shop",
+    "categoria": "fumetteria",
+    "indirizzo": "Viale XXIV Maggio 64/3, Pesaro",
+    "provincia": "pesaro_urbino",
+    "link": "https://www.facebook.com/ragno.pesaro.fumetti.manga/",
+    "colore": "#E3B23C"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     12.9112,
+     43.90816
+    ]
+   },
+   "properties": {
+    "nome": "Kaleidon",
+    "categoria": "fumetteria",
+    "indirizzo": "Via Abbati 23, Pesaro",
+    "provincia": "pesaro_urbino",
+    "link": "https://www.instagram.com/kaleidonpesaro/",
+    "colore": "#E3B23C"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     12.86977,
+     43.90721
+    ]
+   },
+   "properties": {
+    "nome": "Dadi e Mattoncini Pesaro",
+    "categoria": "negozio",
+    "indirizzo": "Via Yuri Gagarin, Pesaro",
+    "provincia": "pesaro_urbino",
+    "link": "https://www.dadiemattoncini.it",
+    "colore": "#E3B23C"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.01456,
+     43.84336
+    ]
+   },
+   "properties": {
+    "nome": "Gasp Comics Fano",
+    "categoria": "fumetteria",
+    "indirizzo": "Via Guido del Cassero 34-36, Fano",
+    "provincia": "pesaro_urbino",
+    "link": "https://www.facebook.com/gaspcomics/",
+    "colore": "#E3B23C"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     12.63548,
+     43.72552
+    ]
+   },
+   "properties": {
+    "nome": "Star Shop Urbino",
+    "categoria": "fumetteria",
+    "indirizzo": "Via Giuseppe Mazzini 38, Urbino",
+    "provincia": "pesaro_urbino",
+    "link": null,
+    "colore": "#E3B23C"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.0158,
+     43.84473
+    ]
+   },
+   "properties": {
+    "nome": "MeMo – Mediateca Montanari",
+    "categoria": "fiera",
+    "indirizzo": "Piazza Pier Maria Amiani, Fano",
+    "provincia": "pesaro_urbino",
+    "link": null,
+    "colore": "#E3B23C"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.72763,
+     43.30128
+    ]
+   },
+   "properties": {
+    "nome": "Mega Comics",
+    "categoria": "fumetteria",
+    "indirizzo": "Via Indipendenza 76, Civitanova Marche",
+    "provincia": "macerata",
+    "link": null,
+    "colore": "#C0392B"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.54761,
+     43.40492
+    ]
+   },
+   "properties": {
+    "nome": "Social Comics",
+    "categoria": "fumetteria",
+    "indirizzo": "Corso Persiani 42, Recanati",
+    "provincia": "macerata",
+    "link": null,
+    "colore": "#C0392B"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.48312,
+     43.27012
+    ]
+   },
+   "properties": {
+    "nome": "Dadi e Mattoncini Corridonia",
+    "categoria": "negozio",
+    "indirizzo": "Centro Commerciale Corridomnia, Via Enrico Mattei 177, Corridonia",
+    "provincia": "macerata",
+    "link": "https://www.dadiemattoncini.it",
+    "colore": "#C0392B"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.42992,
+     43.33234
+    ]
+   },
+   "properties": {
+    "nome": "Centro Fiere Villa Potenza",
+    "categoria": "fiera",
+    "indirizzo": "Via Eugenio Niccolai 6, Villa Potenza, Macerata",
+    "provincia": "macerata",
+    "link": null,
+    "colore": "#C0392B"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.50215,
+     43.27967
+    ]
+   },
+   "properties": {
+    "nome": "Centro Commerciale Val di Chienti",
+    "categoria": "fiera",
+    "indirizzo": "Via Giambattista Velluti 31, Piediripa di Macerata",
+    "provincia": "macerata",
+    "link": null,
+    "colore": "#C0392B"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.58743,
+     42.85355
+    ]
+   },
+   "properties": {
+    "nome": "Il Tempio del Tengu",
+    "categoria": "fumetteria",
+    "indirizzo": "Via Alessandria 2/G, Ascoli Piceno",
+    "provincia": "ascoli",
+    "link": null,
+    "colore": "#9B1B30"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.88374,
+     42.94709
+    ]
+   },
+   "properties": {
+    "nome": "Cartoon City",
+    "categoria": "fumetteria",
+    "indirizzo": "Via Formentini 84, San Benedetto del Tronto",
+    "provincia": "ascoli",
+    "link": null,
+    "colore": "#9B1B30"
+   }
   }
  ]
 }
