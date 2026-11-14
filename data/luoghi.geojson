@@ -168,6 +168,96 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     13.43436,
+     43.61371
+    ]
+   },
+   "properties": {
+    "nome": "Jumanji Games",
+    "categoria": "negozio",
+    "indirizzo": "Via Matteo Ricci 12, Ancona",
+    "provincia": "ancona",
+    "link": null,
+    "colore": "#1F5FAD"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.52484,
+     43.61706
+    ]
+   },
+   "properties": {
+    "nome": "Prime Game",
+    "categoria": "negozio",
+    "indirizzo": "Via Carlo Maratta 20/A, Ancona",
+    "provincia": "ancona",
+    "link": null,
+    "colore": "#1F5FAD"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.21634,
+     43.71485
+    ]
+   },
+   "properties": {
+    "nome": "Trick Room Store",
+    "categoria": "negozio",
+    "indirizzo": "Via Cavour 6, Senigallia",
+    "provincia": "ancona",
+    "link": null,
+    "colore": "#1F5FAD"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.21967,
+     43.71428
+    ]
+   },
+   "properties": {
+    "nome": "Dadi e Mattoncini Senigallia centro",
+    "categoria": "negozio",
+    "indirizzo": "Via Guglielmo Oberdan 17, Senigallia",
+    "provincia": "ancona",
+    "link": "https://www.dadiemattoncini.it",
+    "colore": "#1F5FAD"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.61682,
+     43.44733
+    ]
+   },
+   "properties": {
+    "nome": "AR Collectibles",
+    "categoria": "negozio",
+    "indirizzo": "Via Luciano Pavarotti 12/E, Loreto",
+    "provincia": "ancona",
+    "link": null,
+    "colore": "#1F5FAD"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      12.90888,
      43.90563
     ]
@@ -276,6 +366,96 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     12.91105,
+     43.90956
+    ]
+   },
+   "properties": {
+    "nome": "Dungeon Pesaro Fumetteria",
+    "categoria": "fumetteria",
+    "indirizzo": "Via Sabbatini 6, Pesaro",
+    "provincia": "pesaro_urbino",
+    "link": "https://www.facebook.com/PesaroDungeon/",
+    "colore": "#E3B23C"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.00541,
+     43.83584
+    ]
+   },
+   "properties": {
+    "nome": "Games Time Fano",
+    "categoria": "negozio",
+    "indirizzo": "Via Roma 124/C, Fano",
+    "provincia": "pesaro_urbino",
+    "link": "https://videogamestime.com/",
+    "colore": "#E3B23C"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.15967,
+     43.75525
+    ]
+   },
+   "properties": {
+    "nome": "Lab For Player",
+    "categoria": "negozio",
+    "indirizzo": "Via Litoranea 97, Marotta di Mondolfo",
+    "provincia": "pesaro_urbino",
+    "link": null,
+    "colore": "#E3B23C"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     12.74849,
+     43.94271
+    ]
+   },
+   "properties": {
+    "nome": "Associazione Giogra (Orconero Studio)",
+    "categoria": "ritrovo",
+    "indirizzo": "Via Giotto, Gradara",
+    "provincia": "pesaro_urbino",
+    "link": null,
+    "colore": "#E3B23C"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     12.49127,
+     43.86964
+    ]
+   },
+   "properties": {
+    "nome": "Hobby Store TCG",
+    "categoria": "negozio",
+    "indirizzo": "Via Roma 50, Mercatino Conca",
+    "provincia": "pesaro_urbino",
+    "link": null,
+    "colore": "#E3B23C"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      13.72763,
      43.30128
     ]
@@ -366,6 +546,114 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     13.44409,
+     43.3015
+    ]
+   },
+   "properties": {
+    "nome": "Star Shop Macerata",
+    "categoria": "fumetteria",
+    "indirizzo": "Corso Cavour 109, Macerata",
+    "provincia": "macerata",
+    "link": "https://www.instagram.com/starshopmacerata/",
+    "colore": "#C0392B"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.29345,
+     43.21055
+    ]
+   },
+   "properties": {
+    "nome": "Fumetteria 42",
+    "categoria": "fumetteria",
+    "indirizzo": "Viale della Repubblica 123, Tolentino",
+    "provincia": "macerata",
+    "link": "https://www.facebook.com/fumetteria42/",
+    "colore": "#C0392B"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.72611,
+     43.31036
+    ]
+   },
+   "properties": {
+    "nome": "Solosealed",
+    "categoria": "negozio",
+    "indirizzo": "Corso Umberto I 146, Civitanova Marche",
+    "provincia": "macerata",
+    "link": null,
+    "colore": "#C0392B"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.70041,
+     43.29377
+    ]
+   },
+   "properties": {
+    "nome": "Dadi e Mattoncini Civitanova Marche",
+    "categoria": "negozio",
+    "indirizzo": "Via San Costantino 98, Civitanova Marche",
+    "provincia": "macerata",
+    "link": "https://www.dadiemattoncini.it",
+    "colore": "#C0392B"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.66278,
+     43.4306
+    ]
+   },
+   "properties": {
+    "nome": "Nikai",
+    "categoria": "negozio",
+    "indirizzo": "Viale dei Cementieri 2D, Porto Recanati",
+    "provincia": "macerata",
+    "link": null,
+    "colore": "#C0392B"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.33534,
+     43.10669
+    ]
+   },
+   "properties": {
+    "nome": "WabiSabiCulture",
+    "categoria": "altro",
+    "indirizzo": "Via Papa Giovanni XXIII 23, San Ginesio",
+    "provincia": "macerata",
+    "link": "https://wabisabiculture.org",
+    "colore": "#C0392B"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      13.58743,
      42.85355
     ]
@@ -395,6 +683,78 @@
     "provincia": "ascoli",
     "link": null,
     "colore": "#9B1B30"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.74437,
+     42.87118
+    ]
+   },
+   "properties": {
+    "nome": "Non Solo Edicola",
+    "categoria": "negozio",
+    "indirizzo": "Via Di Vittorio 24, Colli del Tronto",
+    "provincia": "ascoli",
+    "link": null,
+    "colore": "#9B1B30"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.78388,
+     43.20631
+    ]
+   },
+   "properties": {
+    "nome": "Comics Soon",
+    "categoria": "fumetteria",
+    "indirizzo": "Via Rossetti 16, Lido di Fermo",
+    "provincia": "fermo",
+    "link": "https://comicssoon.com",
+    "colore": "#7FB7E8"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.68785,
+     43.23474
+    ]
+   },
+   "properties": {
+    "nome": "Tabaccheria Il Geco",
+    "categoria": "negozio",
+    "indirizzo": "Via XXV Aprile 7, Sant'Elpidio a Mare",
+    "provincia": "fermo",
+    "link": null,
+    "colore": "#7FB7E8"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     13.84131,
+     43.08894
+    ]
+   },
+   "properties": {
+    "nome": "Contea dei Ciliegi",
+    "categoria": "altro",
+    "indirizzo": "Via dei Piceni 14, Pedaso",
+    "provincia": "fermo",
+    "link": null,
+    "colore": "#7FB7E8"
    }
   }
  ]
