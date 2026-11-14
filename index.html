@@ -74,6 +74,12 @@
         --fc-button-active-bg-color:var(--verde); --fc-button-active-border-color:var(--verde); }
   .fc .fc-toolbar-title { font-size:clamp(16px,2.4vw,22px); text-transform:capitalize; }
   .fc a { color:inherit; } .fc-event { cursor:pointer; }
+  /* vista mese: i titoli vanno a capo invece di essere tagliati ("🎂 Compleanno del Cavaliere") */
+  .fc .fc-daygrid-event { white-space:normal; }
+  .fc .fc-daygrid-event .fc-event-title { white-space:normal; overflow-wrap:break-word; hyphens:auto;
+                                          line-height:1.2; font-size:.82em; }
+  .fc .fc-daygrid-event .fc-event-main { padding:2px 4px; }
+  @media (max-width:640px) { .fc .fc-daygrid-event .fc-event-title { font-size:.66em; } }
   footer { text-align:center; color:var(--tenue); font-size:12px; padding:0 16px 24px; }
   [hidden] { display:none !important; }
 

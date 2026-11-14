@@ -30,17 +30,17 @@
    "colore": "#E3B23C",
    "img": "img/pesaro_urbino.webp",
    "evento": [
-    "Burdèll, segnatevi la data: {fiera} è {quando}, a {comune}! Arte, fumetto e cosplay: finalmente un evento all'altezza del Duca.",
-    "Gim! {fiera} a {comune} è {quando}. Venite a farmi da pubblico: io porto la bacchetta, voi gli applausi."
+    "Vén otra, burdèll! {fiera} l'è {quando}, a {comune}: fumett, arte e cosplay. Gim, ch'el Duca ve aspeta in prima fila!",
+    "Segnév la data, burdèll: {fiera}, {quando}, a {comune}. Mé port la bachèta, vó portè i aplaus. Gim!"
    ],
    "evento_passato": [
-    "{fiera} a {comune} è già andato in scena. Chi c'era, sa. Chi non c'era... al prossimo concerto!"
+    "{fiera} a {comune} l'è bel e finit, burdèll. Chi c'era, sa; chi 'n c'era... Gim, al prossim an!"
    ],
    "luogo": [
-    "Vén otra! {luogo} è una tappa per chi ha gusto: {categoria}, in {indirizzo}. Il Duca approva."
+    "Vén otra! {luogo} l'è un post per chi c'ha gust: {categoria}, in {indirizzo}. El Duca l'aprova."
    ],
    "compleanno": [
-    "Sono nato il 29 febbraio, come Rossini. Il vero compleanno ce l'ho ogni quattro anni; negli altri festeggio il 28 e, sì, me ne lamento."
+    "So' nat el 29 febbraio, cum Rossini. El compleann ver el fag ogni quatr'an; ji altri an el fag el 28 e, sé, me lament."
    ]
   },
   "ancona": {
@@ -49,17 +49,17 @@
    "colore": "#1F5FAD",
    "img": "img/ancona.webp",
    "evento": [
-    "Toh và, {fiera} è {quando}, a {comune}. Bè, venite, ma 'n fate casino al porto. Io ce sarò. Forse.",
-    "Oh, ascoltate: {fiera}, {quando}, a {comune}. Famo cuscì: ci si vede lì e nessuno si perde, và."
+    "Toh và, {fiera} è {quando}, a {comune}. 'Namo bè: venite, ma 'n fate casino al porto. Io ce sarò. Forse, và.",
+    "Oh, sentite 'n po': {fiera}, {quando}, a {comune}. Famo cuscì: ce se vede lì e 'n se perde nessuno, và."
    ],
    "evento_passato": [
-    "{fiera} a {comune}? Già fatto, và. Bè, ve lo siete perso? Al prossimo giro."
+    "{fiera} a {comune}? Già fatto, và. Ve lo sete perso? Bè, pacienza: al prossimo giro, 'namo."
    ],
    "luogo": [
     "Toh và, {luogo}. {categoria}, in {indirizzo}. Bè, ce se trova roba bona: andatece, ma 'n fate casino."
    ],
    "compleanno": [
-    "Il 4 maggio, San Ciriaco. Il mio compleanno. Niente feste, grazie. Però gli auguri... quelli fateli."
+    "El 4 maggio, San Ciriaco: el compleanno mio. Feste gnente, grazie. Però l'auguri... quelli fateli, và."
    ]
   },
   "macerata": {
@@ -68,17 +68,17 @@
    "colore": "#C0392B",
    "img": "img/macerata.webp",
    "evento": [
-    "Silenzio in sala! {fiera} è {quando}, a {comune}! Me sa mi janne: preparate i cosplay, che il palcoscenico ci aspetta!",
-    "Arza 'sse chjappe, che {fiera} è {quando}! A {comune} si va in scena, e voglio vedervi tutti in prima fila."
+    "Silenziu in sala! {fiera} è {quando}, a {comune}! Me sa mi janne: preparate li cosplay, che lu palcoscenicu ce aspetta!",
+    "Arza 'sse chjappe, che {fiera} è {quando}! A {comune} se va in scena, e ve vojo vedé tutti in prima fila."
    ],
    "evento_passato": [
-    "Il sipario su {fiera} è già calato! Ma niente lacrime: il prossimo anno si replica, a {comune}."
+    "Lu sipariu su {fiera} è già calatu! Ma gnente lacrime: l'annu che vè se replica, a {comune}."
    ],
    "luogo": [
-    "Applausi per {luogo}! {categoria} in {indirizzo}: un palcoscenico per veri appassionati."
+    "Applausi pe' {luogo}! {categoria} in {indirizzo}: un palcoscenicu pe' li veri appassionati. A coccu de pippa!"
    ],
    "compleanno": [
-    "Il 31 agosto, San Giuliano: il mio compleanno è il gran finale dell'estate. Applausi, fiori e almeno un bis!"
+    "Lu 31 d'agostu, San Giulià: lu compleannu mio è lu gran finale dell'estate. Applausi, fiori e armeno un bis!"
    ]
   },
   "fermo": {
@@ -87,17 +87,17 @@
    "colore": "#7FB7E8",
    "img": "img/fermo.webp",
    "evento": [
-    "Ammàzza, {fiera} è {quando}, a {comune}! Corro a prendere la lanterna: venite tutti, a la lèsta!",
-    "{fiera}, {quando}, a {comune}! Ascoli dice che sono troppo piccola per andarci da sola. Quindi venite con me, così non rompe!"
+    "Ammàzza, {fiera} è {quando}, a {comune}! Corro a pjà la lanterna: venite tutti, a la lèsta!",
+    "{fiera}, {quando}, a {comune}! Ascoli dice che so' troppo piccola pe' jicce da sola. Allora venite co' me, a razzu, così non rompe!"
    ],
    "evento_passato": [
-    "Uffa, {fiera} a {comune} è già finito! Il prossimo anno ci andiamo tutti insieme, promesso?"
+    "Uffa, {fiera} a {comune} è già finito! Ma non ve mittete a fiottà: l'annu che vè ce jimo tutti 'nsieme, promesso?"
    ],
    "luogo": [
-    "Ammàzza, {luogo}! {categoria} in {indirizzo}. Ce vado sempre... quando Ascoli me lo lascia fà!"
+    "Ammàzza, {luogo}! {categoria} in {indirizzo}. Ce vaco sempre... quanno Ascoli me lo lascia fà!"
    ],
    "compleanno": [
-    "Il 15 agosto, l'Assunta: il Palio di Fermo e il mio compleanno nello stesso giorno! Il più bello dell'anno!"
+    "Lu 15 d'agostu, l'Assunta: lu Paliu de Fermo e lu compleannu mia lo stesso jornu! Ammàzza, è lu più bellu dell'annu!"
    ]
   },
   "ascoli": {
@@ -106,17 +106,17 @@
    "colore": "#9B1B30",
    "img": "img/ascoli.webp",
    "evento": [
-    "Jame! {fiera} è {quando}, a {comune}! Lucidate le lance e preparate i cosplay: il Cavaliere vi aspetta. Pozz i bbe!",
-    "Ué, quatrà! {fiera}, {quando}, a {comune}. Ci si vede lì, e chi arriva in ritardo paga le olive fritte."
+    "Jame! {fiera} è {quando}, a {comune}! Lucidate le lance e preparate li cosplay: lu Cavaliere ve aspetta. Pozz i bbe!",
+    "Ué, quatrà! {fiera}, {quando}, a {comune}. Ce se vede là, e chi arriva tardi paga l'olive fritte. Jame!"
    ],
    "evento_passato": [
-    "{fiera} a {comune} è già passato. Ma il Cavaliere non dimentica: al prossimo torneo!"
+    "Auà, {fiera} a {comune} è già passato. Ma lu Cavaliere non se scorda: al prossimo torneo, quatrà!"
    ],
    "luogo": [
-    "Jame! {luogo}, {categoria} in {indirizzo}. Il Cavaliere lo raccomanda. Pozz i bbe!"
+    "Jame! {luogo}, {categoria} in {indirizzo}. Arusta furia: lu Cavaliere lo raccomanda. Pozz i bbe!"
    ],
    "compleanno": [
-    "Il 5 agosto, Sant'Emidio, nel tempo della Quintana: il giorno giusto per compiere gli anni. Il regalo? Una lancia nuova."
+    "Lu 5 d'agostu, Sant'Emidio, co' la Quintana: lu jornu justu pe' fa' l'anni. Lu regalo? 'Na lancia nova."
    ]
   }
  },
